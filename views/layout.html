@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Express</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="http://localhost:35729/livereload.js"></script>
+</head>
+<body>
+
+<div id="target">
+
+</div>
+
+<script type="text/x-handlebars-template" id="template-listItem">
+    {{#each comic}}
+    <li data-id="">
+        <img src="{{thumbnail.path}}.{{thumbnail.extension}}" alt="">
+        <div class="container-caption">
+            <div class="txt-title">{{name}}</div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+
+<script src="/js/build/app.js"></script>
+
+<script src="/components/jquery/dist/jquery.min.js"></script>
+<script src="/components/handlebars/handlebars.min.js"></script>
+<script>
+    (function () {
+        "use strict";
+        var marvel = {
+            data: [],
+            init: function () {
+                $.ajax({
+                    url: this.getComicDataUrl(2014),
+                    success: function(resp) {
+                        marvel.data = resp.data.results;
+                        $(marvel).trigger("receivedData");
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr, status, error);
+                        console.log("error");
+                    }
+                });
+
+                $(marvel).on("receivedData", function () {
+                    var theList = document.getElementsByClassName("list-videos")[0];
+                    var source = document.getElementById("template-listItem").innerHTML;
+                    var template = Handlebars.compile(source);
+                    var html = template({comic: marvel.data});
+
+                    theList.innerHTML = html;
+                });
+            },
+            getComicDataUrl: function (year) {
+                var url = "/api";
+                return url;
+            },
+            getMockDataUrl: function (year) {
+                return "/tmp/json/marvel.json"
+            }
+        }
+        //marvel.init();
+    })();
+</script>
+
+<!--
+
+-->
+</body>
+</html>
