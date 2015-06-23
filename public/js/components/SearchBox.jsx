@@ -30,7 +30,7 @@ class SearchBox extends React.Component {
                     <div className="input-group">
                         <input type="text" value={this.state.term} className="form-control app-header__search" onChange={this.handleTermEvent.bind(this)} placeholder="Search" name="term" />
                         <div className="input-group-addon">
-                            <button type="submit" id="basic-addon2 btn">Search</button>
+                            <button type="submit" id="basic-addon2 btn" title="search"><i className="fa fa-search"></i></button>
                         </div>
                     </div>
                 </fieldset>

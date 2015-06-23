@@ -5,3 +5,5 @@ node_modules/
 public/components/
 public/css/
 public/js/build/
+
+bower_components/
