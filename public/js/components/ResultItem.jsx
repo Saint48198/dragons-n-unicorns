@@ -8,10 +8,14 @@ class ResultsItem extends React.Component {
         }
     }
 
+    handleClick(e) {
+        alert("click");
+    }
+
     render() {
         return(
-            <li>
-                <img src={this.props.img} alt=""/>
+            <li onClick={this.handleClick}>
+                <img src={this.props.img} alt="" />
                     <div className="container-caption">
                         <div className="txt-title">{this.props.name}</div>
                     </div>

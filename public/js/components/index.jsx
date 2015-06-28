@@ -3,6 +3,7 @@ var $ = require('jquery');
 var Header = require('./Header.jsx');
 var SearchBox = require('./SearchBox.jsx');
 var ResultItem = require('./ResultItem.jsx');
+var ModalDialog = require('./Modal.jsx');
 
 class Main extends React.Component {
     constructor (props) {
@@ -78,7 +79,9 @@ class Main extends React.Component {
                         search={this.search.bind(this)}
                     />
                     <main className="container">
-                        loading...
+                        <div className="container-loading">
+                            <i className="fa fa-cog fa-spin"> </i> loading...
+                        </div>
                     </main>
                 </div>
             );
@@ -108,6 +111,7 @@ class Main extends React.Component {
                         })}
                     </ul>
                 </main>
+                <ModalDialog />
             </div>
         );
     }
