@@ -3,7 +3,6 @@ var $ = require('jquery');
 var Header = require('./Header.jsx');
 var SearchBox = require('./SearchBox.jsx');
 var ResultItem = require('./ResultItem.jsx');
-var ModalDialog = require('./Modal.jsx');
 
 class Main extends React.Component {
     constructor (props) {
@@ -42,6 +41,7 @@ class Main extends React.Component {
         var total = 0;
         var param;
         var query = "";
+
         if (queries) {
             params = queries.substr(1).split("&");
             total = params.length;
@@ -106,12 +106,12 @@ class Main extends React.Component {
                                     key={el.id}
                                     name={el.name}
                                     img={imgSrc}
+                                    data={el}
                                 />
                             );
                         })}
                     </ul>
                 </main>
-                <ModalDialog />
             </div>
         );
     }

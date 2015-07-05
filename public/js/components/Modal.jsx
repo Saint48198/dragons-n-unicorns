@@ -14,8 +14,8 @@ class Modal extends React.Component {
 
     render() {
         return(
-            <div className="modal fade">
-                <div className="modal-dialog">
+            <div className="modal fade" id="modalDialog" tabindex="-1" role="dialog">
+                <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
